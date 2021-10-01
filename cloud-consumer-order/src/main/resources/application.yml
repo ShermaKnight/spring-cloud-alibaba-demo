@@ -4,7 +4,10 @@ server:
 spring:
   application:
     name: cloud-consumer-order
-
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.71.129:8848
 
 service:
   payment: http://cloud-provider-payment
