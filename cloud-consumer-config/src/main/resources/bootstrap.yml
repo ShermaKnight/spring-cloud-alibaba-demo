@@ -1,0 +1,13 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: cloud-consumer-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.71.129:8848
+      config:
+        server-addr: 192.168.71.129:8848
+        file-extension: yaml
