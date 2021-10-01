@@ -1,0 +1,10 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: cloud-consumer-order
+
+
+service:
+  payment: http://cloud-provider-payment
