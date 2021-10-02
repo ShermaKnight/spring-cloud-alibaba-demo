@@ -1,13 +1,17 @@
 package org.example.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import lombok.extern.slf4j.Slf4j;
 import org.example.entities.Payment;
+import org.example.handler.BlockHandler;
 import org.example.model.CommonResult;
 import org.example.service.PaymentService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -37,6 +41,16 @@ public class PaymentController {
         Payment payment = paymentService.getById(id);
         if (Optional.ofNullable(payment).isPresent()) {
             return new CommonResult<>(200, "success", payment);
+        }
+        return new CommonResult<>(400, "failed");
+    }
+
+    @GetMapping("/")
+    public CommonResult get() {
+        log.info("Request port: {}", serverPort);
+        List<Payment> payments = paymentService.get();
+        if (!CollectionUtils.isEmpty(payments)) {
+            return new CommonResult<>(200, "success", payments);
         }
         return new CommonResult<>(400, "failed");
     }
