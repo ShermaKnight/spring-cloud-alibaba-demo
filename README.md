@@ -5,3 +5,5 @@
 - 服务注册与发现：nacos
 - 服务配置：nacos
 - 流量控制、服务降级：sentinel
+- 分布式事务：seata
+
