@@ -19,7 +19,16 @@ spring:
     sentinel:
       transport:
         dashboard: 192.168.71.129:8080
-        port: 8719
+      eager: true
+      datasource:
+        ds:
+          nacos:
+            server-addr: 192.168.71.129:8848
+            namespace: 915b8d64-e88c-4d1a-b7ac-36f2f6df34ce
+            group-id: DEFAULT_GROUP
+            rule-type: flow
+            data-id: payment-sentinel-flow-rules
+            data-type: json
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
