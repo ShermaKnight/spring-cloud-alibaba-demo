@@ -43,3 +43,8 @@ seata:
       group: SEATA_GROUP
       username: nacos
       password: nacos
+
+feign:
+  hystrix:
+    enabled: false
+

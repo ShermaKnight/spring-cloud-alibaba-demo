@@ -2,6 +2,7 @@ package org.example.service;
 
 import com.alibaba.fastjson.JSONObject;
 import io.seata.common.util.CollectionUtils;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dao.OrderDao;
 import org.example.entities.Order;
@@ -32,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
     private StorageService storageService;
 
     @Override
+    @GlobalTransactional(name = "create-order", rollbackFor = Exception.class)
     public void create(OrderRequest orderRequest) {
         Long productId = orderRequest.getProductId();
         Integer count = orderRequest.getCount();
