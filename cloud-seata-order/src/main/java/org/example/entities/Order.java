@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -18,4 +19,6 @@ public class Order implements Serializable {
     private Integer count;
     private BigDecimal money;
     private Integer status;
+    private Date createTime;
+    private Date updateTime;
 }

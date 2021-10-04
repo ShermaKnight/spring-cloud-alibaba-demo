@@ -4,24 +4,26 @@
 <mapper namespace="org.example.dao.OrderDao">
 
     <select id="getById" parameterType="Long" resultMap="BaseResultMap">
-        select * from tal_order where id = #{id}
+        select * from tbl_order where id = #{id}
     </select>
 
-    <resultMap id="BaseResultMap" type="org.example.entities.Storage">
+    <resultMap id="BaseResultMap" type="org.example.entities.Order">
         <id column="id" property="id" jdbcType="BIGINT" />
         <id column="user_id" property="userId" jdbcType="BIGINT" />
         <id column="product_id" property="productId" jdbcType="BIGINT" />
         <id column="count" property="count" jdbcType="INTEGER" />
         <id column="money" property="money" jdbcType="DECIMAL" />
         <id column="status" property="status" jdbcType="INTEGER" />
+        <id column="create_time" property="createTime" jdbcType="DATE" />
+        <id column="update_time" property="updateTime" jdbcType="DATE" />
     </resultMap>
 
     <insert id="save" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
-        insert into tal_order(user_id, product_id, count, money, status)
+        insert into tbl_order(user_id, product_id, count, money, status)
         values(#{userId}, #{productId}, #{count}, #{money}, 0)
     </insert>
     
     <update id="updateStatus">
-        update tal_order set status = #{status} where id = #{id} and user_id = #{userId} and status = #{statusBefore}
+        update tbl_order set status = #{status} where id = #{id} and user_id = #{userId} and status = #{statusBefore}
     </update>
 </mapper>

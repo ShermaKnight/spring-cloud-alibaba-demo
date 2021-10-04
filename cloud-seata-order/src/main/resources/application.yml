@@ -5,18 +5,15 @@ spring:
   application:
     name: cloud-seata-order
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.71.129:3306/seata_order?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.71.128:3306/seata_order?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: FN5HW5Y1XQJ742I7
   cloud:
-    alibaba:
-      seata:
-        tx-service-group: tx_group
     nacos:
       discovery:
-        server-addr: 192.168.71.129:8848
+        server-addr: 192.168.71.128:8848
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -31,3 +28,18 @@ management:
 service:
   account: http://cloud-seata-account
   storage: http://cloud-seata-storage
+
+seata:
+  application-id: ${spring.application.name}
+  tx-service-group: ${spring.application.name}-group
+  service:
+    vgroup-mapping:
+      cloud-seata-order-group: default
+  registry:
+    type: nacos
+    nacos:
+      namespace: b9c753fe-56e5-48f1-ad10-0349e0ca3b11
+      serverAddr: 192.168.71.128:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos

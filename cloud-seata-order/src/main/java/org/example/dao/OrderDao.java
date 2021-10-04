@@ -1,14 +1,15 @@
 package org.example.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.example.entities.Order;
 
 @Mapper
 public interface OrderDao {
 
-    Order getById(Long id);
+    Order getById(@Param("id") Long id);
 
     void save(Order order);
 
-    void updateStatus(Long id, Long userId, Integer status, Integer statusBefore);
+    void updateStatus(@Param("id") Long id, @Param("userId") Long userId, @Param("status") Integer status, @Param("statusBefore") Integer statusBefore);
 }

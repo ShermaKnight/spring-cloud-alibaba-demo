@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(value = {Exception.class})
-    public CommonResult blockException(Exception e) {
-        return new CommonResult(HttpStatus.BAD_REQUEST.value(), e.getLocalizedMessage());
+    @ExceptionHandler(value = {ServiceException.class})
+    public CommonResult serviceException(ServiceException e) {
+        return new CommonResult(e.getCode(), e.getMessage());
     }
 
 }

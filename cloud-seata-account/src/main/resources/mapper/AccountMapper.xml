@@ -4,10 +4,10 @@
 <mapper namespace="org.example.dao.AccountDao">
 
     <select id="getById" parameterType="Long" resultMap="BaseResultMap">
-        select * from tal_account where id = #{id}
+        select * from tbl_account where id = #{id}
     </select>
 
-    <resultMap id="BaseResultMap" type="org.example.entities.Storage">
+    <resultMap id="BaseResultMap" type="org.example.entities.Account">
         <id column="id" property="id" jdbcType="BIGINT" />
         <id column="user_id" property="userId" jdbcType="BIGINT" />
         <id column="user_name" property="userName" jdbcType="VARCHAR" />
@@ -16,10 +16,12 @@
         <id column="total" property="total" jdbcType="DECIMAL" />
         <id column="used" property="used" jdbcType="DECIMAL" />
         <id column="residue" property="residue" jdbcType="DECIMAL" />
+        <id column="create_time" property="createTime" jdbcType="DATE" />
+        <id column="update_time" property="updateTime" jdbcType="DATE" />
     </resultMap>
 
     <update id="updateByCondition">
-        update tal_account set used = used + #{money}, residue = residue - #{money}
+        update tbl_account set used = used + #{money}, residue = residue - #{money}
         where user_id = #{userId}
     </update>
 </mapper>

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +21,6 @@ public class Account implements Serializable {
     private BigDecimal total;
     private BigDecimal used;
     private BigDecimal residue;
+    private Date createTime;
+    private Date updateTime;
 }

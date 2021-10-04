@@ -4,14 +4,15 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dao.OrderDao;
 import org.example.entities.Order;
+import org.example.handler.ServiceException;
 import org.example.model.CommonResult;
 import org.example.model.OrderRequest;
 import org.springframework.beans.BeanUtils;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 @Slf4j
@@ -42,6 +43,7 @@ public class OrderServiceImpl implements OrderService {
                 BeanUtils.copyProperties(orderRequest, order);
                 order.setUserId(userId);
                 order.setMoney(price.multiply(number));
+                order.setCreateTime(new Date());
                 log.info("create order");
                 orderDao.save(order);
                 log.info("decrease storage");
@@ -51,9 +53,10 @@ public class OrderServiceImpl implements OrderService {
                 log.info("update order status");
                 orderDao.updateStatus(order.getId(), userId, 1, 0);
                 log.info("done");
+                return;
             }
         }
-        throw new RuntimeException("product not exists");
+        throw new ServiceException(400, "product not exists");
     }
 
     // 获取用户ID

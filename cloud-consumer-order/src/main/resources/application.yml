@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.71.129:8848
+        server-addr: 192.168.71.128:8848
 
 service:
   payment: http://cloud-provider-payment
