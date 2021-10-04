@@ -14,8 +14,8 @@
         <id column="total" property="total" jdbcType="BIGINT" />
         <id column="used" property="used" jdbcType="BIGINT" />
         <id column="residue" property="residue" jdbcType="BIGINT" />
-        <id column="create_time" property="createTime" jdbcType="DATE" />
-        <id column="update_time" property="updateTime" jdbcType="DATE" />
+        <id column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <id column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
     <update id="updateByCondition">
