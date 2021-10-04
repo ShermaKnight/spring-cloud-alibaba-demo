@@ -12,6 +12,9 @@
         <module>cloud-consumer-order</module>
         <module>cloud-consumer-config</module>
         <module>cloud-provider-payment-sentinel</module>
+        <module>cloud-seata-order</module>
+        <module>cloud-seata-account</module>
+        <module>cloud-seata-storage</module>
     </modules>
     <packaging>pom</packaging>
 

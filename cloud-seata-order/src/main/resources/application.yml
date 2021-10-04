@@ -1,0 +1,33 @@
+server:
+  port: 8020
+
+spring:
+  application:
+    name: cloud-seata-order
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.71.129:3306/seata_order?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: FN5HW5Y1XQJ742I7
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: tx_group
+    nacos:
+      discovery:
+        server-addr: 192.168.71.129:8848
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: org.example.entities
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+service:
+  account: http://cloud-seata-account
+  storage: http://cloud-seata-storage
